@@ -1,0 +1,266 @@
+{
+	"$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentParameters.json#",
+	"contentVersion": "1.0.0.0",
+	"parameters": {
+
+		"managedidentityName": {
+			"value": "saas3managedidentityqa"
+		},
+
+		"uniqueStorageName": {
+			"value": "stgsaasqa160"
+		},
+		"storageSKU": {
+			"value": "Standard_LRS"
+		},
+		"storagekind": {
+			"value": "StorageV2"
+		},
+		"storagesupportsHttpsTrafficOnly": {
+			"value": true
+		},
+		
+		"blobContainerName": {
+			"value": "licences"
+		},
+		"blobServiceProperties": {
+			"value": {
+				"automaticSnapshotPolicyEnabled": true,
+				"changeFeed": {
+					"enabled": true,
+					"retentionInDays": 30
+				},
+				"containerDeleteRetentionPolicy": {
+					"days": 30,
+					"enabled": true
+				},
+				"defaultServiceVersion": "2008-10-27",
+				"deleteRetentionPolicy": {
+					"days": 30,
+					"enabled": true
+				},
+				"isVersioningEnabled": true,
+				"lastAccessTimeTrackingPolicy": {
+					"blobType": [
+						"blockBlob"
+				  ],
+				  "enable": true,
+				  "name": "AccessTimeTracking",
+				  "trackingGranularityInDays": 1
+				},
+				"restorePolicy": {
+					"days": 25,
+					"enabled": true
+				}
+			  }
+		},
+		"blobContainerProperties":{
+			"value": {
+				"metadata": {},
+				"publicAccess": "None"
+			  }
+		},
+
+		"acrName": {
+			"value": "acr160qa"
+		},
+		"acrSku":{
+			"value": "Basic"
+		},
+		"adminUserEnabled":{
+			"value": false
+		},
+
+		"virtualNetworkName":{
+			"value": "my-vnet"
+		},
+		"addprefvnet":{
+			"value": "10.0.0.0/16"
+		},
+		"snet1Name":{
+			"value": "subnet1"
+		},
+		"addprefsnet1":{
+			"value": "10.0.0.0/23"
+		},
+
+		"accountName":{
+			"value": "cosmosdb-acc-saas3-qa"
+		},
+		"databaseName": {
+			"value": "testcdb"
+		},
+		"containerName" : {
+			"value": "testcdbcontainer"
+		},
+		"partitionKey":{
+			"value": {
+				"paths": [
+				  "/id"
+				],
+				"kind": "Hash"
+			  }
+		},
+		"indexingPolicy": {
+			"value": {
+				"indexingMode": "consistent",
+				"includedPaths": [
+				  {
+					"path": "/*"
+				  }
+				],
+				"excludedPaths": [
+				  {
+					"path": "/_etag/?"
+				  }
+				]
+			  }
+		},
+		"databaseAccountOfferType":{
+			"value": "Standard"
+		},
+		"dbdefaultConsistencyLevel":{
+			"value": "Session"
+		},
+		"enableFreeTier":{
+			"value": true
+		},
+		"throughput":{
+			"value": 400
+		},
+
+		"kvappName":{
+			"value": "epivaultdvqa"
+		},
+		"kv_sku":{
+			"value": "Standard"
+		},
+		"tenantId":{
+			"value": "1e781d9c-3854-4004-9e5b-318b1041d856"
+		},
+		"enabledForDeployment":{
+			"value": false
+		},
+		"enabledForTemplateDeployment":{
+			"value": false
+		},
+		"enabledForDiskEncryption":{
+			"value": false
+		},
+		"enableRbacAuthorization":{
+			"value": false
+		},
+		"softDeleteRetentionInDays":{
+			"value": 90
+		},
+		"enablePurgeProtection":{
+			"value": true
+		},
+		"enableSoftDelete":{
+			"value": true
+		},
+
+		"csmsKeyName":{
+			"value": "cosmosKey"
+		},
+		"stKeyName":{
+			"value": "stAccKey"
+		},
+		"keysProperties":{
+            "value": {
+				"attributes": {
+					"enabled": true
+				  },
+                "keyOps": [
+                    "encrypt"
+                ],
+                "keySize": 4096,
+                "kty": "RSA",
+                "rotationPolicy": {
+                    "attributes": {
+                        "expiryTime": "P90D"
+                  },
+                  "lifetimeActions": [
+                    {
+                        "action": {
+                        "type": "rotate"
+                      },
+                      "trigger": {
+                        "timeAfterCreate": "P83D"
+                      }
+                    }
+                  ]
+                }
+              }
+        },
+
+		"environment_name" : {
+			"value": "qa"
+		},
+		"appInsightname" : {
+			"value": "appInsight-qa"
+		},
+		"managedEnvName" : {
+			"value": "conapp-mangedenv"
+		},
+		"frontendappName" : {
+			"value": "epicor-saas3-mgmt-portal-qa"
+		},
+		"backendappNames" : {
+			"value": [
+				"deploymentstatus-svc-saas3-qa",
+				"masterdata-svc-saas3-qa",
+				"tnt-inst-prov-svc-saas3-qa"
+			  ]
+		},
+		"containerimage" : {
+			"value": "nginx"
+		},
+		"frontendappingress" : {
+			"value": {
+				"allowInsecure": false,
+				"external": true,
+                "targetPort": 80				
+			}
+		},
+		"backendappingress" : {
+			"value": {
+				"allowInsecure": false,
+				"external": true,
+                "targetPort": 80				
+			}
+		},
+		"conresources" :{
+			"value": {
+				"cpu": 0.5,
+				"memory": "1.0Gi"
+			  }
+		},
+		"daprenable" :{
+			"value": false
+		},
+		"daprAppProtocol" :{
+			"value": "http"
+		},
+		"scale" :{
+			"value": {
+				"minReplicas": 1,
+				"maxReplicas": 1
+			  }
+		},
+		"logAnaProperties" :{
+			"value": {
+				"retentionInDays": 30,
+				"features": {
+				  "searchVersion": 1
+				},
+				"sku": {
+				  "name": "PerGB2018"
+				}
+			  }
+		},
+		"appLogsDestination" :{
+			"value": "log-analytics"
+		}
+	}
+  }
